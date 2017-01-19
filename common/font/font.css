@@ -1,0 +1,13 @@
+/*屏幕用到的三种字体*/
+@font-face {
+	font-family: fzltdhk;
+	src:url(./FZLTDHK.ttf);
+}
+@font-face {
+	font-family: fzlthk;
+	src:url(./FZLTHK.ttf);
+}
+@font-face {
+	font-family: CenturyGothic;
+	src: url(./Century-Gothic.ttf);
+}

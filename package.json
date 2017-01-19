@@ -1,0 +1,25 @@
+{
+  "name": "share",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "atool-build",
+    "start": "dora --plugins webpack,webpack-hmr"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "atool-build": "^0.9.0",
+    "dora": "^0.4.3",
+    "dora-plugin-webpack": "^0.8.1",
+    "dora-plugin-webpack-hmr": "^0.2.1"
+  },
+  "entry": {
+    "line": "./src/line.js"
+  },
+  "dependencies": {
+    "d3": "^4.4.2",
+    "jquery": "^3.1.1"
+  }
+}
