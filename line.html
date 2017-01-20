@@ -6,7 +6,23 @@
 		<link rel="stylesheet" type="text/css" href="./line.css" />
 	</head>
 	<body>
-		<div id="line" class="item"></div>
+		<div id="line" class="item">
+			<svg>
+				<defs>
+					<linearGradient id="left2right" x1="0" x2="1" y1="0" y2="0">
+						<stop offset="0%" stop-color="#052755" stop-opacity="0"/>
+						<stop offset="60%" stop-color="#052755" stop-opacity=".1"/>
+						<stop offset="100%" stop-color="#052755" stop-opacity="1"/>
+					</linearGradient>
+					<linearGradient id="right2left" x1="1" x2="0" y1="0" y2="0">
+						<stop offset="0%" stop-color="#052755" stop-opacity="0"/>
+						<stop offset="60%" stop-color="#052755" stop-opacity=".1"/>
+						<stop offset="100%" stop-color="#052755" stop-opacity="1"/>
+					</linearGradient>
+				</defs>
+			</svg>	
+		</div>
+		<div id="earth" class="item"></div>
 		<script src="./common.js"></script>
 		<script src="./line.js"></script>
 	</body>

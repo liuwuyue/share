@@ -1,6 +1,5 @@
 //各种2d函数
 import * as d3 from 'd3';
-const lineColor = 'yellow';
 const d2 = {
 	/**
 	  * @description 直接画一条线
@@ -17,7 +16,7 @@ const d2 = {
 			.append('path')
 			.attr('stroke-width', '1')
 			.attr('fill', 'transparent')
-			.attr('stroke', lineColor);
+			.attr('stroke', 'yellow');
 		if (option.animate) {
 			let linePoints = [];
 			let points = option.points;
@@ -25,6 +24,7 @@ const d2 = {
 				linePoints = linePoints.concat(this.computePoints({start: points[i], end: points[i + 1]}));
 			}
 			this.animateLine({
+				g: option.g,
 				path: path,
 				points: linePoints
 			});
@@ -35,6 +35,7 @@ const d2 = {
 	/**
 	  * @descirption 根据给出的点 描出线
 	  * @option
+	  *     g 最外围容器
 	  *		path 路径
 	  *     points
 	  */
@@ -47,7 +48,18 @@ const d2 = {
 			.y((d) => {return d.y;});
 		render();
 		function render () {
-			if (i >= length && length < 2) {
+			if (i >= length || length < 2) {
+				/*
+				option.path
+					.attr('opacity', 1)
+					.transition()
+					.duration(1000)
+					.attr('opacity', 0);
+				setTimeout(() => {
+					option.g.remove();			
+				}, 1000);
+				*/
+				option.g.remove();
 				return;
 			}
 			requestAnimationFrame(render);
@@ -122,7 +134,7 @@ const d2 = {
 			.append('path')
 			.attr('stroke-width', '1')
 			.attr('fill', 'transparent')
-			.attr('stroke', lineColor);
+			.attr('stroke', option.lineColor || 'red');
 		//控制点
 		let control;
 		let start = option.start;
@@ -152,6 +164,7 @@ const d2 = {
 				end: end
 			});
 			this.animateLine({
+				g: option.g,
 				path: belizier,
 				points: points
 			});
