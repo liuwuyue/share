@@ -26,7 +26,8 @@ const d2 = {
 			this.animateLine({
 				g: option.g,
 				path: path,
-				points: linePoints
+				points: linePoints,
+				destroy: option.destroy
 			});
 		} else {
 			path.attr('d', line(option.points))
@@ -49,6 +50,11 @@ const d2 = {
 		render();
 		function render () {
 			if (i >= length || length < 2) {
+				//自动清除
+				if (typeof option.destroy === 'undefined' || option.destory === true ) {
+					console.log(option.destroy);
+					option.g.remove();
+				}
 				/*
 				option.path
 					.attr('opacity', 1)
@@ -59,7 +65,6 @@ const d2 = {
 					option.g.remove();			
 				}, 1000);
 				*/
-				option.g.remove();
 				return;
 			}
 			requestAnimationFrame(render);
@@ -166,7 +171,8 @@ const d2 = {
 			this.animateLine({
 				g: option.g,
 				path: belizier,
-				points: points
+				points: points,
+				destroy: option.destroy
 			});
 		} else {
 			let path = d3.path();

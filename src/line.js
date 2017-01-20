@@ -6,19 +6,20 @@ import Earth from './earth';
 //画一条直线
 const w = $('body').width();
 const h = $('body').height();
-let type = 1;
+let type = 0; 
 let points = [];
 switch (type) {
 	case 0:
 		//生成 100个模拟点
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 3; i++) {
 			points.push({x: Math.random() * w, y: Math.random() * h});
 		}
 		//动态的画线
 		d2.line({
 			g: d3.select('#line svg').append('g'),
 			points: points,
-			animate: true
+			animate: true,
+			destroy: false
 		});
 		break;
 	case 1:
