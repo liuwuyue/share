@@ -1,6 +1,6 @@
 //各种2d函数
 import * as d3 from 'd3';
-const lineColor = 'red'
+const lineColor = 'yellow';
 const d2 = {
 	/**
 	  * @description 直接画一条线
