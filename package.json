@@ -16,7 +16,8 @@
     "dora-plugin-webpack-hmr": "^0.2.1"
   },
   "entry": {
-    "line": "./src/line.js"
+    "line": "./src/line.js",
+	"css": "./src/css.js" 
   },
   "dependencies": {
     "d3": "^4.4.2",
