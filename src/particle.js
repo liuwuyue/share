@@ -10,8 +10,8 @@ let x0 = 0,
 	rows = h / 3,
 	cols = w / 3 ;
 let from = {
-	x: Math.floor(w / 2),
-	y: h + 10 
+	x: w / 2,
+	y: h  / 2 
 };
 util.loadImg('./img/isux.png')
 	//加载图片
