@@ -17,6 +17,7 @@
   },
   "entry": {
     "line": "./src/line.js",
+    "particle": "./src/particle.js",
 	"css": "./src/css.js" 
   },
   "dependencies": {
