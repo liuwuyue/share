@@ -12,6 +12,10 @@ let x0 = 0,
 	h =  300,
 	rows = h / 3,
 	cols = w / 3 ;
+let move = {
+	x: 0,
+	y: 0
+};
 let from = {
 	x: w / 2 + 200, 
 	y: h / 2 + 200
@@ -56,7 +60,18 @@ util.loadImg('./img/isux.png')
 				}	
 			}
 			if (!isGoOn) {
-				return;	
+				for (let i = 0; i < pixes.length; i++) {
+					pixes[i].p = 0;
+				}
+				from = {
+					x: Math.random() * width,
+					y: Math.random() * height
+				};
+				move = {
+					x: Math.random() * w,
+					y: Math.random() * h 
+				};
+				start = t;
 			}
 			start = start === null ? t : start;
 			ctx.clearRect(x0, y0, width, height);
@@ -77,7 +92,8 @@ util.loadImg('./img/isux.png')
 				ctx.fillStyle = tmp.fill;	
 				//let point = util.line({x: from.x, y: from.y}, {x: tmp.x, y: tmp.y}, p);
 				let point = util.bezier({x: from.x, y: from.y}, {x: tmp.x, y: tmp.y}, p);
-				ctx.fillRect(point.x + (width - w) / 2, point.y +  (height - h) / 2, tmp.w, tmp.h);
+				ctx.fillRect(point.x + move.x, point.y + move.y, tmp.w, tmp.h);
+				//ctx.fillRect(point.x + (width - w) / 2, point.y +  (height - h) / 2, tmp.w, tmp.h);
 			}
 		}
 	})
