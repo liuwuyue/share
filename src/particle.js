@@ -8,8 +8,8 @@ let width = 600,
 //图像相关信息
 let x0 = 0,
 	y0 = 0,
-	w = 200,
-	h =  200,
+	w = 300,
+	h =  300,
 	rows = h / 3,
 	cols = w / 3 ;
 let from = {
@@ -17,7 +17,7 @@ let from = {
 	y: h / 2 + 200
 };
 let duration = 1000;
-util.loadImg('./img/logo.svg')
+util.loadImg('./img/isux.png')
 	//加载图片
 	.then((img) => {
 		ctx.drawImage(img, x0, y0, w, h);
