@@ -31,6 +31,32 @@ const util = {
 			};
 		}	  
 		return point;
+	},
+	//根据给定的p返回对应的点
+	bezier: function (start, end, p) {
+		let direction = Math.random() > 0.5 ? 1 : -1;
+		let control;
+		//设置控制点
+		if (start.x === end.x) {
+			control = {
+				x: start.x +  direction * Math.abs(end.y - start.y) / 2,
+				y: (start.y + end.y) / 2
+			};
+		} else if (start.y === end.y) {
+			control = {
+				x: (start.x + end.x) / 2,
+				y: start.y + direction * Math.abs(start.x - end.x) / 2
+			};
+		} else {
+			control = {
+				x: start.x,
+				y: (start.y + end.y)  / 2
+			};
+		}
+		return {
+			x: (1 - p) * (1 - p) * start.x + 2 * p * (1 - p) * control.x + p * p * end.x,
+			y: (1 - p) * (1 - p) * start.y + 2 * p * (1 - p) * control.y + p * p * end.y
+		}
 	}
 };
 export default util;

@@ -13,7 +13,7 @@ let x0 = 0,
 	rows = h / 3,
 	cols = w / 3 ;
 let from = {
-	x: w / 2,
+	x: w / 2 + 200, 
 	y: h / 2 + 200
 };
 let duration = 1000;
@@ -75,7 +75,8 @@ util.loadImg('./img/isux.png')
 					p = 1;		
 				}
 				ctx.fillStyle = tmp.fill;	
-				let point = util.line({x: from.x, y: from.y}, {x: tmp.x, y: tmp.y}, p);
+				//let point = util.line({x: from.x, y: from.y}, {x: tmp.x, y: tmp.y}, p);
+				let point = util.bezier({x: from.x, y: from.y}, {x: tmp.x, y: tmp.y}, p);
 				ctx.fillRect(point.x + (width - w) / 2, point.y +  (height - h) / 2, tmp.w, tmp.h);
 			}
 		}
