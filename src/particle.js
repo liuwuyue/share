@@ -3,32 +3,41 @@ import util from './particle-util';
 let canvas = document.querySelector('#particle canvas');
 let ctx = canvas.getContext('2d');
 //canvas的宽高
-let width = 600,
-	height = 600;
-//图像相关信息
-let x0 = 0,
-	y0 = 0,
-	w = 300,
-	h =  300,
-	rows = h / 3,
-	cols = w / 3 ;
-let move = {
-	x: 0,
-	y: 0
-};
-let from = {
-	x: w / 2 + 200, 
-	y: h / 2 + 200
-};
-let duration = 1000;
-util.loadImg('./img/isux.png')
+let width = window.innerWidth,
+	height = window.innerHeight;
+canvas.width = width;
+canvas.height = height;
+util.loadImg('./img/logo.jpg')
 	//加载图片
 	.then((img) => {
+		//图像相关信息
+		let x0 = 0,
+			y0 = 0,
+			w = img.width,
+			h =  img.height;
+			/*
+			rows = h / 3,
+			cols = w / 3 ;
+			*/
+		//平移量
+		let move = {
+			x: 0,
+			y: 0
+		};
+		//起点
+		let from = {
+			x: w / 2 + 200,
+			y: h / 2 + 200
+		};
+		let duration = 1000;
+		//画在 x0,y0 处
 		ctx.drawImage(img, x0, y0, w, h);
 		let imgData = ctx.getImageData(x0, y0, w, h).data;
 		//截取的行列
+		/*
 		let sw = Math.floor(w / rows);
 		let sh = Math.floor(h / cols);
+		*/
 		let pixes = [];
 		for (let i = 0; i < h; i += 1) {
 			for (let j = 0; j < w; j += 1) {
@@ -55,9 +64,9 @@ util.loadImg('./img/isux.png')
 			let isGoOn = false;
 			for (let i = 0; i < pixes.length; i++) {
 				if (pixes[i].p < 1) {
-					isGoOn = true;	
+					isGoOn = true;
 					break;
-				}	
+				}
 			}
 			if (!isGoOn) {
 				for (let i = 0; i < pixes.length; i++) {
@@ -68,14 +77,14 @@ util.loadImg('./img/isux.png')
 					y: Math.random() * height
 				};
 				move = {
-					x: Math.random() * w,
-					y: Math.random() * h 
+					x: Math.random() * (width - w),
+					y: Math.random() * (height -h)
 				};
 				start = t;
 			}
 			start = start === null ? t : start;
 			ctx.clearRect(x0, y0, width, height);
-			requestAnimationFrame(draw);	
+			requestAnimationFrame(draw);
 			let dx = 0;
 			let dy = 0;
 			let len = pixes.length;
@@ -84,15 +93,21 @@ util.loadImg('./img/isux.png')
 				let p = (t - start - tmp.delay) / duration;
 				tmp.p = p;
 				if (p <= 0) {
-					continue;	
+					continue;
 				}
 				if (p >= 1) {
-					p = 1;		
+					p = 1;
 				}
-				ctx.fillStyle = tmp.fill;	
-				//let point = util.line({x: from.x, y: from.y}, {x: tmp.x, y: tmp.y}, p);
-				let point = util.bezier({x: from.x, y: from.y}, {x: tmp.x, y: tmp.y}, p);
-				ctx.fillRect(point.x + move.x, point.y + move.y, tmp.w, tmp.h);
+				ctx.fillStyle = tmp.fill;
+				let point;
+				if (Math.random() > 0.5) {
+					//曲线
+					point = util.bezier({x: from.x, y: from.y}, {x: tmp.x + move.x, y: tmp.y + move.y}, p);
+				} else {
+					//直线
+					point = util.line({x: from.x, y: from.y}, {x: tmp.x + move.x, y: tmp.y + move.y}, p);
+				}
+				ctx.fillRect(point.x, point.y, tmp.w, tmp.h);
 				//ctx.fillRect(point.x + (width - w) / 2, point.y +  (height - h) / 2, tmp.w, tmp.h);
 			}
 		}

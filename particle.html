@@ -4,17 +4,25 @@
 		<meta charset="utf-8">
 		<title>大屏相关分享-粒子效果</title>
 		<style type="text/css">
+			* {
+				box-sizing:border-box;	
+			}
+			html, body {
+				width:100%;
+				height:100%;
+				margin:0;	
+				font-size:0;
+			}
 			#particle {
-				width:600px;
-				height:600px;
-				margin:100px auto;
+				width:100%;
+				height:100%;
 			}
 		</style>
 	</head>
 	<body>
 		<!-- 粒子效果 展示 -->
 		<div id="particle">
-			<canvas width="600" height="600"></canvas>
+			<canvas></canvas>
 		</div>
 		<script src="./common.js"></script>
 		<script src="./particle.js"></script>
