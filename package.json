@@ -18,10 +18,12 @@
   "entry": {
     "line": "./src/line.js",
     "particle": "./src/particle.js",
-    "css": "./src/css.js"
+    "css": "./src/css.js",
+    "map": "./src/map.js"
   },
   "dependencies": {
-    "d3": "^4.4.2",
+    "china-geojson": "^1.0.0",
+    "d3": "^4.5.0",
     "jquery": "^3.1.1",
     "three": "^0.84.0"
   }
