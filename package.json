@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "atool-build",
-    "start": "dora -p 9000 --plugins webpack,webpack-hmr"
+    "start": "dora -p 8000 --plugins webpack,webpack-hmr"
   },
   "author": "",
   "license": "ISC",
