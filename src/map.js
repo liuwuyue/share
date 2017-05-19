@@ -1,2 +1,5 @@
 import mapUtil from './map-util';
-mapUtil.china('#map');
+import * as d3 from 'd3';
+d3.json('./cn-all.geo.json', (geoJson)=> {
+	mapUtil.china('#map', geoJson);
+});
