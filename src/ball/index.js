@@ -5,6 +5,7 @@ import Ball from './ball';
 const max = 52;
 const step = 4;
 const prefix = '/dist/img/ball/female/';
+import Mask from './mask';
 let option = {
     //容器的宽 高
     width: 500,
@@ -24,7 +25,11 @@ option.rings.data.forEach((item) => {
         c.imgSrc = prefix + (index >= 10 ? index : ('0' + index)) + '.png';
     });
 });
+let r = option.width * 1.1;
 ReactDOM.render(
-    <Ball option={option}></Ball>,
+    <div className="app">
+        <Ball option={option}></Ball>
+        <Mask option={{width: r, height: r}}></Mask>
+    </div>,
     document.querySelector('.wrapper')
 );
