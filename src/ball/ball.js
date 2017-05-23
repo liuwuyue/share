@@ -67,7 +67,6 @@ class Ball extends React.Component {
     componentDidMount () {
         let list = [];
         this.el.querySelectorAll('.ring').forEach((el) => {
-            console.log(el.style.transform);  
             list.push({
                 el: el,
                 transform: el.style.transform
