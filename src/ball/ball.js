@@ -24,31 +24,35 @@ class Ball extends React.Component {
         let op = option.rings.option;
         let n = Math.floor(option.height / op.itemSize);
         let m = Math.floor(n / 2);
-        let max = 80;
+        let max = 70;
         //每一次弯曲的角度
         let step = max / m;
         let rings = [];
         //上面一半
         //竖直方向的高度
-        let gap = -50;
+        let size = op.itemSize;
+        //环新距离球心的距离
+        let gap = -1 * size / 2;
+        let ty = 0;
         for (let i = 0; i < m; i++) {
             let deg = 90 - i * step;
             let r = Math.sqrt(option.width / 2 * option.width / 2 - gap * gap)
+            ty += Math.sin(deg / 180 * Math.PI) * size * -1;
             rings.unshift(
-                <Ring option={{...op, rotateX: i * step * -1,  ty: gap, r: r, type: 'up'}}  key={'up' + i}></Ring>
+                <Ring option={{...op, rotateX: i * step * -1,  ty: ty, r: r}}  key={'up' + i}></Ring>
             );  
-            gap += Math.sin(deg / 180 * Math.PI) * op.itemSize * -1;
+            gap = ty + Math.sin(deg / 180 * Math.PI) * size / 2 * -1;
         }
         //下面的一半
-        gap = 0;
+        ty = 0 
         for (let i = 0; i < m; i++) {
             let deg = i * step;
+            gap = ty + Math.cos(deg / 180 * Math.PI) * size / 2;
             let r = Math.sqrt(option.width / 2 * option.width / 2 - gap * gap)
-            console.log(gap);
             rings.push(
-                <Ring option={{...op, rotateX: deg, ty: gap, r: r, type: 'down'}}  key={'down' + i}></Ring>
+                <Ring option={{...op, rotateX: deg, ty: ty, r: r}}  key={'down' + i}></Ring>
             );  
-            gap += Math.cos(deg / 180 * Math.PI) * op.itemSize;
+            ty += Math.cos(deg / 180 * Math.PI) * op.itemSize;
         }
         return (
             <div className="ball" style={style}>

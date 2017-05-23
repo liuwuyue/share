@@ -33,7 +33,7 @@ class Ring extends React.Component {
             )); 
         }
         return (
-            <div className={"ring " + option.type} style={style}>
+            <div className="ring" style={style}>
                 {
                     child
                 }
