@@ -20,7 +20,9 @@ let option = {
 };
 option.rings.data.forEach((item) => {
     item.forEach((c) => {
-        c.imgSrc = prefix + c.imgSrc; 
+        let index = Math.floor(Math.random() * 53);
+        console.log(index);
+        c.imgSrc = prefix + (index >= 10 ? index : ('0' + index)) + '.png';
     });
 });
 ReactDOM.render(

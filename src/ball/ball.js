@@ -14,6 +14,7 @@
 import React from 'react';
 import Ring from './ring';
 import './ball.less';
+import Mask from './mask';
 class Ball extends React.Component {
     render () {
         let option = this.props.option;
@@ -52,15 +53,36 @@ class Ball extends React.Component {
             rings.push(
                 <Ring option={{...op, rotateX: deg, ty: ty, r: r}}  key={'down' + i}></Ring>
             );  
-            ty += Math.cos(deg / 180 * Math.PI) * op.itemSize;
+            ty += Math.cos(deg / 180 * Math.PI) * size;
         }
         return (
-            <div className="ball" style={style}>
+            <div className="ball" style={style} ref={ c => this.el = c}>
                 {
                     rings
                 }
+                <Mask></Mask>
             </div>         
         ); 
+    }
+    componentDidMount () {
+        let list = [];
+        this.el.querySelectorAll('.ring').forEach((el) => {
+            console.log(el.style.transform);  
+            list.push({
+                el: el,
+                transform: el.style.transform
+            });
+        }); 
+        update();
+        let y = 0;
+        function update () {
+            requestAnimationFrame(update);
+            let step = 1;
+            list.forEach((item) => {
+                item.el.style.transform = [item.transform, 'rotateY(' + y + 'deg'].join(' ');  
+            });
+            y = (y + step) % 360;
+        }
     }
 }
 export default Ball;
