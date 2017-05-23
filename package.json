@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "atool-build",
-    "start": "dora -p 8000 --plugins webpack,webpack-hmr"
+    "build": "atool-build -o ./dist/app",
+    "start": "dora -p 9000 --plugins webpack,webpack-hmr"
   },
   "author": "",
   "license": "ISC",
@@ -19,12 +19,14 @@
     "line": "./src/line.js",
     "particle": "./src/particle.js",
     "css": "./src/css.js",
-    "map": "./src/map.js"
+    "ball": "./src/ball/index.js"
   },
   "dependencies": {
     "china-geojson": "^1.0.0",
     "d3": "^4.5.0",
     "jquery": "^3.1.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "three": "^0.84.0"
   }
 }
