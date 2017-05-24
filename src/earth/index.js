@@ -36,8 +36,6 @@ function render () {
     } else if (light.position.z <= 20) {
         direction = 1;
     }
-    console.log(light.position.z, gap, direction);
     light.position.z += gap * direction;
-    console.log(light.position.z);
     renderer.render(scene, camera);
 }
