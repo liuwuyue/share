@@ -13,7 +13,7 @@ renderer.setClearColor(0xffffff, 1);
 
 document.body.appendChild(renderer.domElement);
 
-let type = 1; //纯粹为了演示 1  球， 2 带贴图
+let type = /2/.test(location.href) ? 2 : 1; //纯粹为了演示 1  球， 2 带贴图
 switch (type) {
     case 1:
         {

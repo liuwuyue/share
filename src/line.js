@@ -6,7 +6,7 @@ import Earth from './earth';
 //画一条直线
 const w = $('body').width();
 const h = $('body').height();
-let type = 0; 
+let type = 1; 
 let points = [];
 switch (type) {
 	case 0:
