@@ -20,12 +20,14 @@
     "particle": "./src/particle.js",
     "css": "./src/css.js",
     "ball": "./src/ball/index.js",
-    "earth": "./src/earth/index.js"
+    "earth": "./src/earth/index.js",
+    "movement": "./src/movement/index.js"
   },
   "dependencies": {
     "china-geojson": "^1.0.0",
     "d3": "^4.5.0",
     "jquery": "^3.1.1",
+    "normalize.css": "^7.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "three": "^0.84.0"
