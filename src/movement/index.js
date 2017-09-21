@@ -11,8 +11,6 @@ canvas.height = h;
 document.querySelector('#movement').appendChild(canvas);
 //上下文环境
 let ctx = canvas.getContext('2d');
-ctx.fillStyle = '#000';
-ctx.fillRect(0, 0, w, h)
 let center = {
     x: w / 2,
     y: h / 2
@@ -43,7 +41,8 @@ function animate (timestamp) {
     if (start === null) {
         start = timestamp;
     }
-    ctx.fillStyle = '#000';
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(0, 0, 0, .9)';
     ctx.fillRect(0, 0, w, h)
     let gap = (timestamp - start) / duration;
     path.map((c) => {

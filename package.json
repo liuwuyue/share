@@ -21,7 +21,9 @@
     "css": "./src/css.js",
     "ball": "./src/ball/index.js",
     "earth": "./src/earth/index.js",
-    "movement": "./src/movement/index.js"
+    "movement": "./src/movement/index.js",
+    "tr": "./src/tr/index.js",
+    "path": "./src/path/index.js"
   },
   "dependencies": {
     "china-geojson": "^1.0.0",
