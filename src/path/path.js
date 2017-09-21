@@ -395,7 +395,7 @@ class Path {
     //动画绘制直线 option start, end, step
     lineTo (option, callback) {
 		let params = {
-			step: STEP,
+			step: this.option.step || STEP,
 			... option
 		};
 		let points = [];
