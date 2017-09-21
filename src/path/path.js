@@ -47,6 +47,10 @@ class Path {
         //执行指令
         //this.run();
     }
+    runStatic () {
+        let path2d = new Path2D(this.path); 
+        this.ctx.stroke(path2d);
+    }
     repeat () {
         this.position = {
             start: null,
