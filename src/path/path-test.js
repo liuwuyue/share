@@ -10,6 +10,6 @@ const config = {
     width: 1124,
     height: 1021,
     scale: [1, 1],
-    path: 'M20 20 L300 300 C200 300 300 400 100 200'
+    path: 'M20 20 L400 400 c200 200 300 300 600 500'
 };
 export default config;
