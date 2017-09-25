@@ -23,7 +23,8 @@
     "earth": "./src/earth/index.js",
     "movement": "./src/movement/index.js",
     "tr": "./src/tr/index.js",
-    "path": "./src/path/index.js"
+    "path": "./src/path/index.js",
+    "points": "./src/points/index.js"
   },
   "dependencies": {
     "china-geojson": "^1.0.0",
