@@ -7,7 +7,7 @@ function data (w, h, max) {
   let n;
   //数据存储
   let points = [];
-  n = 500;
+  n = 2000;
   while (n--) {
     points.push({
       x: Math.floor(Math.random() * w),
