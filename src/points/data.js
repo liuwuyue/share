@@ -7,13 +7,16 @@ function data (w, h, max) {
   let n;
   //数据存储
   let points = [];
-  n = 1000;
+  n = 500;
   while (n--) {
     points.push({
       x: Math.floor(Math.random() * w),
       y: Math.floor(Math.random() * h),
       type: Math.random() > 0.5 ? 0 : 1,
-      size: Math.random() * max,
+      max: Math.random() * 40 + 20,
+      p1: {x: Math.random(), y: Math.random()},
+      p2: {x: Math.random(), y: Math.random()},
+      t: Math.random(),
       direction: 1,
     });
   }
