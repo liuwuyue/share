@@ -46,7 +46,8 @@ class Points {
     let ctx = this.ctx;
     ctx.clearRect(0, 0, this.option.w, this.option.h);
     if (this.option.data) {
-      ctx.fillStyle = 'rgba(0, 0, 0, .9)';
+      //ctx.fillStyle = '#2E65C5';
+      ctx.fillStyle = '#000';
       ctx.fillRect(0, 0, this.option.w, this.option.h);
       this.option.data.forEach((item) => {
         let size = item.size;

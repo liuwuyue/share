@@ -24,7 +24,8 @@
     "movement": "./src/movement/index.js",
     "tr": "./src/tr/index.js",
     "path": "./src/path/index.js",
-    "points": "./src/points/index.js"
+    "points": "./src/points/index.js",
+    "world": "./src/world/index.js"
   },
   "dependencies": {
     "china-geojson": "^1.0.0",
