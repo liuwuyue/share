@@ -16,7 +16,11 @@ class World {
       el: document.body,
       ...option
     };
-    this.option.el.style.background="url(" + map + ") no-repeat center /100%";
+    Object.assign(this.option.el.style, {
+      background: "url(" + map + ") no-repeat center /100%",
+      width: this.option.w + 'px',
+      height: this.option.h + 'px'
+    });
     //预处理数据
     this.preDealData();
     this.createCanvas();
