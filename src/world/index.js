@@ -1,7 +1,8 @@
 import World from './world';
-import data from './worldMapData';
-//import data from './data';
-console.log(data);
+//lbs数据
+//import data from './worldMapData';
+//双11数据
+import data from './data';
 let world = new World({
   w: 1100,
   h: 550,
