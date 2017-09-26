@@ -5,8 +5,6 @@
 //获取图标
 import star from './start_alpha.png';
 import map from './world.png';
-//缩放尺寸
-const size = 2;
 //步长
 const step = 0.02;
 //世界地图
@@ -16,16 +14,17 @@ class World {
       w: 100,
       h: 100,
       el: document.body,
-      ...option 
+      ...option
     };
     this.option.el.style.background="url(" + map + ") no-repeat center /100%";
     //预处理数据
     this.preDealData();
-    this.img();
     this.createCanvas();
-    this.animate();
-    console.log(this.option);
-  }        
+    this.img()
+      .then(() => {
+        this.animate();
+      })
+  }
   animate () {
     const animateFn = () => {
       requestAnimationFrame(animateFn);
@@ -59,41 +58,38 @@ class World {
       //每个点都是不同的闪烁速度 不同的变化曲线
       item.size = this.bezier({p1: item.p1, p2: item.p2, t: item.t}) * item.max;
       //每个点都是相同的闪烁速度 线性变化
-      //item.size =  (1 - item.t) * 0 + item.t * max;
+      //item.size =  (1 - item.t) * 0 + item.t * item.max;
     });
   }
   preDealData () {
-    //this.option.data = this.option.data.slice(0, 10);
     //获取最大值， 最小值
     let max = Number.MIN_VALUE;
     let min = Number.MAX_VALUE;
     this.option.data.forEach((item) => {
       //数据处理 减小差距
       item.value = Math.pow(item.value, 1 / 16);
-      max = Math.max(item.value, max); 
+      max = Math.max(item.value, max);
       min = Math.min(item.value, min);
     });
     this.max = max;
     this.min = min;
     this.distance = max - min;
     this.option.data = this.option.data.map((item, index) => {
+      let {x, y, size} = this.computeXYS(item);
       return {
         ... this.computeXYS(item),
         p1: {x: Math.random(), y: Math.random()},
         p2: {x: Math.random(), y: Math.random()},
         t: Math.random(),
         direction: 1,
-      }; 
-    });  
+      };
+    });
   }
   //定位 lng lat value
   computeXYS (item) {
-    var self = this;
-    var halfWidth = self.option.w / 2;
-    var halfHeight = self.option.h / 2;
     let {lat, lng, value} = item;
-    var x = (lng - (-180)) / 360 * self.option.w + (-halfWidth);
-    var y = (lat - (-90)) / 180 * self.option.h + (-halfHeight);
+    let x = (lng - (-180)) / 360 * this.option.w;
+    let y = Math.abs((lat - 90) / 180) * this.option.h;
     return {
       x: x,
       y: y,
@@ -102,13 +98,18 @@ class World {
   }
   //获取闪烁图标
   img () {
-    let star_img = new Image();
-    star_img.src = star; 
-    this.star = star_img;
+    return new Promise((resolve, reject) => {
+      let star_img = new Image();
+      star_img.onload = () => {
+        resolve();
+      };
+      star_img.src = star;
+      this.star = star_img;
+    });
   }
   //创建canvas 到所在容器里面
   createCanvas () {
-    let canvasEl = document.createElement('canvas'); 
+    let canvasEl = document.createElement('canvas');
     canvasEl.width = this.option.w;
     canvasEl.height = this.option.h;
     this.option.el.appendChild(canvasEl);
@@ -121,8 +122,8 @@ class World {
       this.option.data.forEach((item) => {
         let size = item.size;
         ctx.drawImage(this.star, item.x - size / 2, item.y - size / 2, size, size);
-      }); 
+      });
     }
-  }        
+  }
 }
 export default World;
