@@ -67,7 +67,7 @@ class World {
     let min = Number.MAX_VALUE;
     this.option.data.forEach((item) => {
       //数据处理 减小差距
-      item.value = Math.pow(item.value, 1 / 16);
+      item.value = Math.pow(item.value, 1 / 5);
       max = Math.max(item.value, max);
       min = Math.min(item.value, min);
     });
@@ -90,10 +90,11 @@ class World {
     let {lat, lng, value} = item;
     let x = (lng - (-180)) / 360 * this.option.w;
     let y = Math.abs((lat - 90) / 180) * this.option.h;
+    let ds = 2.5;
     return {
-      x: x,
-      y: y,
-      max: 20 + (value - this.min) / this.distance * 30
+      x: x + Math.random() * ds * (Math.random() > 0.5 ? 1 : -1),
+      y: y + Math.random() * ds * (Math.random() > 0.5 ? 1 : -1),
+      max: 10 + (value - this.min) / this.distance * 70
     };
   }
   //获取闪烁图标
