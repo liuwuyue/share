@@ -2,4 +2,8 @@
 //import * as Cube from './cube';
 //import * as buffer from './buffer';
 //import * as material from './material';
-import * as test from './test';
+//import * as test from './test';
+//import * as particle from './particle';
+//import * as objJson from './objJson';
+//import * as face from './face';
+import * as line from './line';
