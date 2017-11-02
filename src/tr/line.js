@@ -35,8 +35,8 @@ let positions = new Float32Array(max * 3);
 geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3));
 
 let material = new THREE.LineBasicMaterial({
-  color: 0xff0000,
-  linewidth: 10
+  color: 0x00ffff,
+  linewidth: 10,
 });
 
 let spline = new THREE.Line(geometry, material);
