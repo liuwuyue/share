@@ -35,6 +35,7 @@
     "normalize.css": "^7.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "three": "^0.84.0"
+    "three": "^0.84.0",
+    "three.meshline": "^1.0.3"
   }
 }
